@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Peste Camus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .sentence-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.2s;
+        }
+
+        .sentence-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .sentence-number {
+            background: black;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .sentence-text {
+            flex: 1;
+            color: #333;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .play-button {
+            background: black;
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .play-button:active {
+            transform: scale(0.95);
+        }
+
+        .play-button.playing {
+            background: linear-gradient(135deg, #fb9393 0%, #f5576c 100%);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            .sentence-card {
+                padding: 15px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .sentence-text {
+                font-size: 15px;
+            }
+
+            .play-button {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sentence-card">
+            <div class="sentence-number">01</div>
+            <div class="sentence-text">La cité elle-même, on doit l'avouer, est laide.</div>
+            <button class="play-button" onclick="playAudio(1, this)">▶</button>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">02</div>
+            <div class="sentence-text">D'aspect tranquille, il faut quelque temps pour apercevoir ce qui la rend différente de tant d'autres villes commerçantes, sous toutes les latitudes.</div>
+            <button class="play-button" onclick="playAudio(2, this)">▶</button>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">03</div>
+            <div class="sentence-text">Comment faire imaginer, par exemple, une ville sans pigeons, sans arbres et sans jardins, où l'on ne rencontre ni battements d'ailes ni froissements de feuilles, un lieu neutre pour tout dire ?</div>
+            <button class="play-button" onclick="playAudio(3, this)">▶</button>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">04</div>
+            <div class="sentence-text">Le changement des saisons ne s'y lit que dans le ciel.</div>
+            <button class="play-button" onclick="playAudio(4, this)">▶</button>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">05</div>
+            <div class="sentence-text">Le printemps s'annonce seulement par la qualité de l'air ou par les corbeilles de fleurs que des petits vendeurs ramènent des banlieues ;</div>
+            <button class="play-button" onclick="playAudio(5, this)">▶</button>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">06</div>
+            <div class="sentence-text">c'est un printemps qu'on vend sur les marchés.</div>
+            <button class="play-button" onclick="playAudio(6, this)">▶</button>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">07</div>
+            <div class="sentence-text">Pendant l'été, le soleil incendie les maisons trop sèches et couvre les murs d'une cendre grise ;</div>
+            <button class="play-button" onclick="playAudio(7, this)">▶</button>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">08</div>
+            <div class="sentence-text">on ne peut plus vivre alors que dans l'ombre des volets clos.</div>
+            <button class="play-button" onclick="playAudio(8, this)">▶</button>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">09</div>
+            <div class="sentence-text">En automne, c'est, au contraire, un déluge de boue.</div>
+            <button class="play-button" onclick="playAudio(9, this)">▶</button>
+        </div>
+
+        <div class="sentence-card">
+            <div class="sentence-number">10</div>
+            <div class="sentence-text">Les beaux jours viennent seulement en hiver.</div>
+            <button class="play-button" onclick="playAudio(10, this)">▶</button>
+        </div>
+    </div>
+
+    <script>
+        let currentAudio = null;
+        let currentButton = null;
+
+        function playAudio(num, button) {
+            const audioFile = `${String(num).padStart(2, '0')}.mp3`;
+            
+            // If same audio is playing, pause it
+            if (currentAudio && currentButton === button) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                button.innerHTML = '▶';
+                button.classList.remove('playing');
+                currentAudio = null;
+                currentButton = null;
+                return;
+            }
+            
+            // Stop any currently playing audio
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                if (currentButton) {
+                    currentButton.innerHTML = '▶';
+                    currentButton.classList.remove('playing');
+                }
+            }
+            
+            // Play new audio
+            currentAudio = new Audio(audioFile);
+            currentButton = button;
+            
+            button.innerHTML = '⏸';
+            button.classList.add('playing');
+            
+            currentAudio.play().catch(err => {
+                console.error('Error playing audio:', err);
+                alert(`Could not play ${audioFile}. Make sure the file exists in the same folder.`);
+                button.innerHTML = '▶';
+                button.classList.remove('playing');
+            });
+            
+            currentAudio.onended = () => {
+                button.innerHTML = '▶';
+                button.classList.remove('playing');
+                currentAudio = null;
+                currentButton = null;
+            };
+        }
+    </script>
+</body>
+</html>
